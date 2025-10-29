@@ -1,379 +1,280 @@
-# Jornada Ativa - Plataforma de Apoio para Pacientes Ortopédicos
+🚀 Jornada Ativa: Plataforma de Apoio Fullstack & IA para Pacientes Ortopédicos
 
-## Visão Geral
+Visão Geral do Projeto
 
-**Jornada Ativa** é uma plataforma Fullstack inovadora que utiliza Inteligência Artificial para oferecer suporte abrangente a pacientes ortopédicos na fila de espera do SUS. O projeto transforma a experiência de espera em uma **jornada ativa, informada e com poder de ação**, combinando tecnologia de ponta com empatia pelo paciente.
+Jornada Ativa é um projeto Fullstack inovador, movido por Inteligência Artificial, concebido para transformar a experiência de espera de pacientes ortopédicos na fila do Sistema Único de Saúde (SUS). O projeto aborda a crise humanitária da espera prolongada, oferecendo suporte contínuo em quatro pilares: Físico, Mental, Legal e Acessibilidade.
 
-### O Problema
+Em vez de ser uma espera passiva, a plataforma transforma o período pré-cirúrgico em uma jornada ativa, informada e com poder de ação.
 
-Pacientes em fila de espera para cirurgias ortopédicas enfrentam desafios significativos:
+💔 O Problema (Contexto Social e Técnico)
 
-- **Deterioração Física**: Atrofia muscular, perda de mobilidade e piora da condição durante a espera
-- **Deterioração Mental**: Ansiedade, depressão, solidão e sensação de impotência
-- **Falta de Informação**: Desconhecimento sobre sua posição na fila e prognóstico
-- **Barreiras Físicas e Legais**: Casa se torna uma prisão; sistema é um labirinto indecifrável
+Milhares de pacientes perdem anos de vida e qualidade de vida enquanto aguardam cirurgias essenciais. Durante essa espera, eles enfrentam:
 
-### A Solução
+Deterioração Física: Atrofia muscular e piora do quadro devido à falta de fisioterapia guiada.
 
-Jornada Ativa ataca esses pontos através de **quatro módulos integrados**, cada um endereçando uma necessidade específica:
+Deterioração Mental: Altos níveis de ansiedade, depressão e isolamento.
 
-## Arquitetura Técnica
+Barreiras de Acesso: Impossibilidade de locomoção, o que impede a busca por direitos e cuidados.
 
-### Stack Tecnológico
+✨ A Solução (Impacto e Inovação)
 
-| Componente | Tecnologia |
-|-----------|-----------|
-| **Frontend** | React 19 + TypeScript + Tailwind CSS 4 |
-| **Backend** | Node.js + Express + tRPC 11 |
-| **Banco de Dados** | MySQL/TiDB com Drizzle ORM |
-| **Autenticação** | Manus OAuth |
-| **IA Generativa** | Google Gemini API |
-| **Visão Computacional** | MediaPipe / TensorFlow.js |
-| **Armazenamento** | S3 (Armazenamento em Nuvem) |
+A Jornada Ativa ataca essas falhas sistêmicas digitalizando o cuidado e a advocacia legal:
 
-### Estrutura do Projeto
+Cuidado Remoto: Fisioterapia segura e acompanhamento de saúde mental guiados por IA.
 
-```
+Eliminação de Barreiras Físicas: O paciente acessa o apoio legal (Defensoria Pública) diretamente de casa.
+
+Advocacia Ativa: Ferramentas digitais para organização de documentos e protocolo de casos legais.
+
+🛠️ Arquitetura Técnica (Fullstack Moderno)
+
+O projeto foi construído sobre uma arquitetura moderna e escalável, utilizando o conceito de "End-to-End Type Safety" com tRPC e Drizzle ORM.
+
+Componente
+
+Tecnologia
+
+Detalhes Técnicos
+
+Frontend
+
+React 19, TypeScript, Tailwind CSS 4
+
+Interface responsiva e acessível, design mobile-first com foco em usabilidade para pacientes com mobilidade reduzida.
+
+Backend
+
+Node.js, Express, tRPC 11
+
+Servidor leve e rápido, comunicação de ponta a ponta com segurança de tipos (Type-safe RPC).
+
+Banco de Dados
+
+MySQL/TiDB, Drizzle ORM
+
+Banco de dados relacional distribuído (TiDB para escalabilidade), gerenciamento de schema e queries com o Drizzle ORM (TypeScript-first).
+
+IA Generativa
+
+Google Gemini API
+
+Motor principal para Chatbots (TCC), Guia de Direitos e extração de dados (OCR).
+
+Visão Computacional
+
+MediaPipe / TensorFlow.js
+
+Utilizada para Pose Estimation (estimativa de pose) no Módulo de Fisioterapia.
+
+Autenticação
+
+Manus OAuth
+
+Sistema de login e gerenciamento de usuários.
+
+Estrutura do Repositório
+
+O projeto segue a abordagem de monorepo lógico para organização clara e separação de responsabilidades:
+
 jornada-ativa/
-├── client/                    # Frontend React
-│   ├── src/
-│   │   ├── pages/            # Páginas dos 4 módulos
-│   │   ├── components/       # Componentes reutilizáveis
-│   │   ├── lib/              # Utilidades e configurações
-│   │   └── App.tsx           # Roteamento principal
-│   └── public/               # Ativos estáticos
-├── server/                   # Backend Node.js
-│   ├── routers.ts           # Definição de procedimentos tRPC
-│   ├── db.ts                # Query helpers do banco de dados
-│   └── _core/               # Infraestrutura (OAuth, LLM, etc)
-├── drizzle/                 # Schema do banco de dados
-│   └── schema.ts            # Definição de tabelas
-└── shared/                  # Código compartilhado
-```
+├── client/                    # 📦 Frontend (React, Componentes, Pages)
+├── server/                   # ⚙️ Backend (Node.js, Express, Lógica de Negócio)
+├── drizzle/                 # 💾 Schema do Banco de Dados (Drizzle ORM)
+└── shared/                  # 🤝 Tipos e Funções Compartilhadas (tRPC)
 
-## Os Quatro Módulos
 
-### Módulo 1: Pré-habilitação Física (O Fisioterapeuta Virtual)
+💻 Módulos em Detalhe (Deep Dive)
 
-**Objetivo**: Manter força e mobilidade durante a espera
+Módulo 1: Pré-habilitação Física (O Fisioterapeuta Virtual)
 
-**Funcionalidades**:
+Inovação: Uso de IA de Visão para garantir a segurança dos exercícios.
 
-- **Plano de Exercícios Personalizado (IA)**: O paciente insere seu diagnóstico (ex: "Aguardando Artroplastia de Quadril"). Um modelo de IA, treinado com protocolos de fisioterapia seguros para pré-cirurgia, gera um plano de exercícios diário de baixo impacto
-- **Assistente de Postura (Pose Estimation)**: Usando a câmera do celular, a IA analisa a postura durante o exercício e dá feedback em tempo real ("Mantenha as costas retas", "Não force o joelho")
-- **Histórico de Progresso**: Acompanhe seus exercícios completados e evolução
+Plano de Exercícios Personalizado (IA): O Gemini gera protocolos de exercícios diários de baixo impacto, minimizando o risco de lesão e focando na musculatura de suporte.
 
-**Endpoints tRPC**:
-- `exercises.generatePlan` - Gera plano personalizado com IA
-- `exercises.getPlans` - Lista planos do usuário
-- `exercises.logCompletion` - Registra conclusão de exercício
-- `exercises.getLogs` - Histórico de exercícios
+Assistente de Postura (Pose Estimation): Utiliza MediaPipe ou TensorFlow.js para analisar a postura do usuário via câmera do dispositivo, fornecendo feedback em tempo real ("Mantenha as costas retas").
 
----
+Endpoints tRPC de Exemplo: exercises.generatePlan, exercises.logCompletion.
 
-### Módulo 2: Suporte de Saúde Mental (O Companheiro de Dor)
+Módulo 2: Suporte de Saúde Mental (O Companheiro de Dor)
 
-**Objetivo**: Oferecer suporte emocional 24/7 e reduzir isolamento
+Inovação: Terapia Cognitivo-Comportamental (TCC) adaptada para dor crônica e espera.
 
-**Funcionalidades**:
+Chatbot de Apoio (Gemini LLM): Um assistente 24/7 treinado em TCC para oferecer técnicas de mindfulness e reestruturação de pensamento, combatendo a solidão e a ansiedade.
 
-- **Chatbot de Apoio (IA)**: Assistente especializado em Terapia Cognitivo-Comportamental (TCC) focada em dor crônica e ansiedade de espera. Oferece técnicas de mindfulness e reestruturação de pensamento
-- **Diário de Dor e Humor**: Registre níveis de dor (1-10), humor (1-10), medicação e notas. A IA identifica padrões ("Sua dor piora em dias que você dorme mal")
-- **Comunidade Segura**: Fórum moderado onde pacientes da mesma fila (ex: "Artroplastia RJ", "Joelho SP") se conectam e compartilham histórias
+Diário de Dor e Humor: Permite registrar dados que a IA analisa para identificar padrões e gatilhos.
 
-**Endpoints tRPC**:
-- `health.logPain` - Registra entrada no diário
-- `health.getPainHistory` - Histórico de dor (últimos 30 dias)
-- `health.chat` - Chat com assistente de IA
-- `health.getChatHistory` - Histórico de conversas
-- `community.createPost` - Criar post na comunidade
-- `community.getPosts` - Listar posts por categoria
-- `community.addComment` - Comentar em posts
+Comunidade Segura: Fórum para conexão de pacientes com o mesmo diagnóstico ou na mesma fila de espera.
 
----
+Endpoints tRPC de Exemplo: health.logPain, health.chat, community.createPost.
 
-### Módulo 3: Acessibilidade (Quebrando Barreiras Físicas)
+Módulo 4: Canal Direto de Advocacia (A Ponte Digital) 👑
 
-**Objetivo**: Identificar barreiras e sugerir adaptações de baixo custo
+Destaque Crítico: Remove a barreira física ao garantir o direito do paciente de casa.
 
-**Funcionalidades**:
+Organizador de Caso Digital (IA + OCR): O paciente fotografa laudos e exames. A IA extrai e organiza CIDs, CRMs e datas, criando uma "pasta do caso" digital pronta para uso legal.
 
-- **Scanner de Acessibilidade (IA)**: Paciente tira fotos de sua casa (banheiro, porta, degrau). A IA identifica barreiras óbvias ("Degrau alto", "Porta estreita para cadeira de rodas", "Falta de barra de apoio")
-- **Soluções de Baixo Custo (IA)**: LLM sugere adaptações simples e DIY (ex: "Veja como improvisar um elevador de assento sanitário") ou indica onde conseguir equipamentos
+Protocolo Direto com Defensoria (Integração API): O sistema guia a redação de uma petição inicial e envia o caso completo através de uma API segura diretamente para a Defensoria Pública (ou usa o Fallback com E-mail Estruturado), eliminando a necessidade de locomoção.
 
-**Endpoints tRPC**:
-- `accessibility.scanHome` - Analisa imagem para barreiras
-- `accessibility.getScans` - Histórico de análises
+Guia de Direitos (LLM): Respostas precisas sobre direitos, como BPC/LOAS e Leis do SUS, baseadas em legislação treinada.
 
----
+Endpoints tRPC de Exemplo: legal.createCase, legal.addDocument, legal.getRightsGuide.
 
-### Módulo 4: Canal Direto de Advocacia (A Ponte Digital)
+💾 Modelagem de Dados e Drizzle ORM
 
-**Objetivo**: Garantir direitos sem precisar sair de casa
+O projeto utiliza 10 tabelas principais, garantindo integridade referencial e organização modular. O Drizzle ORM é usado para tipagem segura das consultas (Type-safe Queries).
 
-**Funcionalidades**:
+Schema Completo (Resumo)
 
-- **Guia de Direitos (IA)**: Assistente treinado com legislação brasileira (Constituição, Leis do SUS, Estatuto da Pessoa com Deficiência) responde perguntas como: "Tenho direito ao BPC/LOAS?", "O que fazer se minha cirurgia foi desmarcada?"
-- **Organizador de Caso Digital (IA + OCR)**: Paciente digitaliza laudos, exames, receitas. IA extrai datas, CIDs, CRMs, criando uma "pasta do caso" digital com linha do tempo clara
-- **Protocolo Direto com Defensoria (API)**: App guia redação de petição. Ao finalizar, envia caso completo (petição + documentos) direto para sistema da Defensoria, abrindo protocolo oficial
-- **Fallback com E-mail Estruturado**: Na ausência de API, gera e-mail formal, anexa documentos organizados, envia para Defensoria solicitando atendimento remoto
-- **Rastreamento de Status**: Acompanhe status do pedido (Enviado, Recebido, Em Análise, Resolvido)
+Tabela
 
-**Endpoints tRPC**:
-- `legal.createCase` - Criar novo caso
-- `legal.getCases` - Listar casos do usuário
-- `legal.addDocument` - Adicionar documento ao caso
-- `legal.getDocuments` - Listar documentos do caso
-- `legal.updateStatus` - Atualizar status do caso
-- `legal.getRightsGuide` - Consultar direitos com IA
+Módulo
 
----
+Chaves de Interesse
 
-## Banco de Dados
+Relacionamento (Exemplo)
 
-### Schema Completo
+users
 
-O projeto utiliza **10 tabelas** organizadas por módulo:
+Geral
 
-#### Tabelas Principais
+id, email, nome
 
-| Tabela | Descrição |
-|--------|-----------|
-| `users` | Usuários autenticados (Manus OAuth) |
-| `exercises` | Planos de exercícios personalizados |
-| `exerciseLogs` | Histórico de exercícios completados |
-| `painDiary` | Registros diários de dor e humor |
-| `chatMessages` | Histórico de conversas com IA |
-| `communityPosts` | Posts do fórum da comunidade |
-| `communityComments` | Comentários em posts |
-| `accessibilityScans` | Análises de barreiras na casa |
-| `legalCases` | Casos legais do paciente |
-| `caseDocuments` | Documentos associados aos casos |
+users (1) → (N) exercises
 
-### Relacionamentos
+exercises
 
-```
-users (1) ──→ (N) exercises
-users (1) ──→ (N) exerciseLogs
-users (1) ──→ (N) painDiary
-users (1) ──→ (N) chatMessages
-users (1) ──→ (N) communityPosts
-users (1) ──→ (N) communityComments
-users (1) ──→ (N) accessibilityScans
-users (1) ──→ (N) legalCases
-legalCases (1) ──→ (N) caseDocuments
-communityPosts (1) ──→ (N) communityComments
-```
+Módulo 1
 
-## Integração com IA
+userId, planoJson, dataCriacao
 
-### Google Gemini API
+users (1) → (N) painDiary
 
-O projeto utiliza a **Google Gemini API** para todas as funcionalidades de IA generativa:
+painDiary
 
-#### Casos de Uso
+Módulo 2
 
-1. **Geração de Planos de Exercícios**: Prompt especializado em protocolos de pré-cirurgia
-2. **Chatbot de Saúde Mental**: Treinado em TCC para dor crônica
-3. **Análise de Acessibilidade**: Identifica barreiras em imagens
-4. **Guia de Direitos**: Responde perguntas sobre legislação brasileira
-5. **Extração de Dados**: OCR para documentos (laudos, exames)
+userId, nivelDor, humor, notas
 
-#### Configuração
 
-```typescript
-// server/_core/llm.ts
-import { invokeLLM } from "./server/_core/llm";
 
-const response = await invokeLLM({
-  messages: [
-    { role: "system", content: "Você é um especialista em..." },
-    { role: "user", content: "Sua pergunta..." }
-  ]
-});
-```
+communityPosts
 
-**Nota**: A chave de API é injetada automaticamente via variáveis de ambiente.
+Módulo 2
 
-## Como Usar
+userId, titulo, conteudo, categoria
 
-### Instalação e Setup
+posts (1) → (N) comments
 
-```bash
-# Clonar repositório
-git clone https://github.com/seu-usuario/jornada-ativa.git
+legalCases
+
+Módulo 4
+
+userId, diagnostico, status, dataAbertura
+
+cases (1) → (N) caseDocuments
+
+caseDocuments
+
+Módulo 4
+
+caseId, tipo, urlS3, metadataOCR
+
+
+
+⚙️ Setup e Instalação Local
+
+Para rodar a Jornada Ativa em ambiente de desenvolvimento, siga os passos abaixo:
+
+Pré-requisitos
+
+Node.js (versão LTS)
+
+pnpm (Recomendado)
+
+MySQL/TiDB (Instância local ou remota)
+
+Instruções
+
+# 1. Clonar repositório
+git clone [https://github.com/MarcioGil/jornada-ativa.git](https://github.com/MarcioGil/jornada-ativa.git)
 cd jornada-ativa
 
-# Instalar dependências
+# 2. Instalar dependências
 pnpm install
 
-# Configurar variáveis de ambiente
-# Copie .env.example para .env e preencha os valores
+# 3. Configurar Variáveis de Ambiente
+# Crie um arquivo .env na raiz do projeto, baseado em .env.example, e preencha:
 
-# Executar migrações do banco de dados
+
+Variáveis Essenciais:
+| Variável | Descrição |
+| :--- | :--- |
+| DATABASE_URL | String de conexão para o MySQL/TiDB. |
+| GEMINI_API_KEY | Sua chave do Google Gemini API (Necessário para IA). |
+| JWT_SECRET | Chave secreta para tokens de autenticação. |
+| VITE_APP_ID, OAUTH_SERVER_URL, etc. | Variáveis para integração com Manus OAuth. |
+
+# 4. Executar Migrações do Banco de Dados (Drizzle Kit)
 pnpm db:push
 
-# Iniciar servidor de desenvolvimento
+# 5. Iniciar Servidor de Desenvolvimento
 pnpm dev
-```
+# O frontend estará disponível em http://localhost:3000 (ou porta configurada)
 
-### Variáveis de Ambiente Necessárias
 
-```env
-DATABASE_URL=mysql://usuario:senha@host:porta/banco
-JWT_SECRET=sua_chave_jwt_secreta
-VITE_APP_ID=seu_app_id_manus
-OAUTH_SERVER_URL=https://api.manus.im
-VITE_OAUTH_PORTAL_URL=https://portal.manus.im
-GEMINI_API_KEY=sua_chave_gemini_api
-```
+🛣️ Roadmap e Próximos Passos
 
-### Fluxo de Usuário
+O projeto está em sua Fase 1 (MVP funcional). O roadmap futuro inclui:
 
-1. **Autenticação**: Usuário faz login via Manus OAuth
-2. **Dashboard**: Acessa página inicial com os 4 módulos
-3. **Módulo de Exercícios**: Cria plano personalizado, acompanha progresso
-4. **Módulo de Saúde**: Registra dor/humor, conversa com IA, participa da comunidade
-5. **Módulo de Acessibilidade**: Escaneia casa, recebe sugestões
-6. **Módulo de Direitos**: Consulta direitos, organiza documentos, abre protocolo
+Fase 2 (Curto Prazo)
 
-## Desenvolvimento
+Integração real com APIs de Defensorias Públicas (via convênio técnico).
 
-### Estrutura de Código
+Implementação completa do Pose Estimation com MediaPipe.
 
-O projeto segue padrões de desenvolvimento moderno:
+Desenvolvimento de relatórios de dor em PDF para apresentação médica.
 
-- **tRPC**: Type-safe RPC para comunicação frontend-backend
-- **Drizzle ORM**: Query builder type-safe para banco de dados
-- **React Hooks**: Hooks customizados para lógica reutilizável
-- **Tailwind CSS**: Utility-first CSS framework
-- **shadcn/ui**: Componentes acessíveis e customizáveis
+Notificações push para lembretes de exercício e atualizações de caso.
 
-### Adicionando Novas Funcionalidades
+Fase 3 (Longo Prazo)
 
-#### 1. Definir Schema no Banco
+Transição para um App mobile nativo (React Native).
 
-```typescript
-// drizzle/schema.ts
-export const minhaTabela = mysqlTable("minhaTabela", {
-  id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull().references(() => users.id),
-  // ... mais colunas
-});
-```
+Integração com wearables (smartwatch) para monitoramento de atividade.
 
-#### 2. Criar Query Helpers
+Análise preditiva de tempo de espera com base em dados anonimizados do SUS.
 
-```typescript
-// server/db.ts
-export async function minhaFuncao(userId: number) {
-  const db = await getDb();
-  return db.select().from(minhaTabela).where(eq(minhaTabela.userId, userId));
-}
-```
+Mecanismos de Gamificação (badges, pontos) para incentivar a adesão à fisioterapia.
 
-#### 3. Adicionar Procedimento tRPC
+🙋 Contato e Informações do Desenvolvedor
 
-```typescript
-// server/routers.ts
-export const appRouter = router({
-  meuModulo: router({
-    minhaFuncao: protectedProcedure.query(({ ctx }) =>
-      minhaFuncao(ctx.user.id)
-    ),
-  }),
-});
-```
+Este projeto é uma demonstração da capacidade de aplicar tecnologia fullstack e IA para solucionar problemas sociais urgentes.
 
-#### 4. Chamar do Frontend
+Perfil
 
-```typescript
-// client/src/pages/MeuComponente.tsx
-const { data } = trpc.meuModulo.minhaFuncao.useQuery();
-```
+Link
 
-## Testes
+Autor
 
-O projeto inclui testes para APIs críticas:
+Márcio Gil
 
-```bash
-# Executar testes
-pnpm test
+GitHub
 
-# Testes com cobertura
-pnpm test:coverage
-```
+github.com/MarcioGil
 
-## Deploy
+LinkedIn
 
-### Plataforma Recomendada
+linkedin.com/in/márcio-gil-1b7669309
 
-O projeto é otimizado para deploy em plataformas Fullstack modernas:
+Portfólio
 
-- **Vercel** (Frontend + Serverless Functions)
-- **Railway** (Docker + PostgreSQL)
-- **Render** (Full Stack)
+marciogil.github.io/curriculum-vitae/
 
-### Checklist de Deploy
+Site
 
-- [ ] Variáveis de ambiente configuradas
-- [ ] Banco de dados migrado
-- [ ] Testes passando
-- [ ] Build sem erros
-- [ ] HTTPS habilitado
-- [ ] CORS configurado
-- [ ] Rate limiting ativado
-- [ ] Logs centralizados
+jornadaopa-dgydumhi.manus.space
 
-## Roadmap Futuro
+Licença: Este projeto está licenciado sob a MIT License.
 
-### Fase 2 (Próximos Meses)
-
-- [ ] Integração com APIs de Defensoria Pública
-- [ ] Pose Estimation em tempo real com MediaPipe
-- [ ] Notificações push
-- [ ] Relatórios em PDF
-- [ ] Integração com calendário (Google Calendar, Outlook)
-
-### Fase 3 (Longo Prazo)
-
-- [ ] App mobile nativo (React Native)
-- [ ] Integração com wearables (smartwatch)
-- [ ] Análise preditiva de tempo de espera
-- [ ] Gamificação (badges, pontos)
-- [ ] Integração com plataformas de telemedicina
-
-## Contribuindo
-
-Contribuições são bem-vindas! Por favor:
-
-1. Fork o repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## Licença
-
-Este projeto é licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-## Contato e Suporte
-
-- **Email**: suporte@jornadaativa.com.br
-- **Website**: https://jornadaativa.com.br
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/jornada-ativa/issues)
-
-## Agradecimentos
-
-Jornada Ativa foi desenvolvido com o objetivo de transformar a vida de pacientes ortopédicos em fila de espera. Agradecemos:
-
-- Aos pacientes que inspiraram este projeto
-- À comunidade de código aberto
-- Aos especialistas em saúde que validaram os protocolos
-- À Google por disponibilizar a Gemini API
-
----
-
-**Desenvolvido com ❤️ para quem espera, mas não desiste.**
-
-*Última atualização: Outubro 2025*
+Desenvolvido com ❤️ para quem espera, mas não desiste.
+Última atualização: Outubro 2025
